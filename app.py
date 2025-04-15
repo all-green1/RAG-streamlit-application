@@ -148,7 +148,7 @@ class HelpBot:
 
         return documents
 
-    def split_docs(self, documents, chunk_size=500, chunk_overlap=20):
+    def split_docs(self, documents, chunk_size=100, chunk_overlap=10):
         # Split the documents into chunks.
 
         text_splitter = RecursiveCharacterTextSplitter(chunk_size=chunk_size, chunk_overlap=chunk_overlap)
@@ -219,6 +219,7 @@ class HelpBot:
                 {"messages": chat_history},
                 config=config
         ):
+            st.write(s)
             if isinstance(s, dict):
                 if 'agent' in s and 'messages' in s['agent']:
                     for message in s['agent']['messages']:
